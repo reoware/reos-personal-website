@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import AnimatedScroll from "../components/AnimatedScroll";
+---
+
+<Layout title="Projects">
+	<main>
+		<!-- navbar -->
+		<Navbar />
+		
+		<!-- hero -->
+		<AnimatedScroll client:load>
+			<div class="sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
+				<div class="my-auto w-full">
+					<p class="text-white text-2xl sm:text-3xl mb-4 text-center">Projects</p>
+				</div>
+			</div>
+		</AnimatedScroll>
+	</main>
+</Layout>

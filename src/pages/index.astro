@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import AnimatedScroll from "../components/AnimatedScroll";
+---
+
+<Layout title="Hello, I'm ophx!">
+	<main>
+		<!-- navbar -->
+		<Navbar />
+		
+		<!-- hero -->
+		<AnimatedScroll client:load>
+			<div class="sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
+				<div class="my-auto w-full">
+					<div class="flex items-center justify-between">
+						<div>
+							<p class="text-white text-5xl sm:text-6xl">Hello, I'm ophx!</p>
+							<p class="text-gray-400 text-2xl sm:text-3xl mb-4">I make websites for fun.</p>
+						</div>
+						<div>
+							<img draggable="false" src="/logo.jpg" class="hidden sm:block rounded-full shadow-lg h-44 w-44">
+						</div>
+					</div>
+				</div>
+			</div>
+		</AnimatedScroll>
+	</main>
+</Layout>
