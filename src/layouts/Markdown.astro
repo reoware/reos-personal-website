@@ -5,8 +5,8 @@ interface Props {
 
 const { frontmatter } = Astro.props;
 
-import AnimatedScroll from "../components/AnimatedScroll";
 import Layout from "./Layout.astro";
+import AnimatedScroll from "../components/AnimatedScroll";
 import moment from "moment";
 
 const date = moment(frontmatter.pubDate.slice(0, 10));
