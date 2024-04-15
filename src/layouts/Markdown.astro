@@ -1,18 +1,32 @@
 ---
-import Layout from "./Layout.astro";
+interface Props {
+	frontmatter: any;
+}
+
 const { frontmatter } = Astro.props;
+
+import AnimatedScroll from "../components/AnimatedScroll";
+import Layout from "./Layout.astro";
+import moment from "moment";
+
+const date = moment(frontmatter.pubDate.slice(0, 10));
 ---
 
 <Layout title={frontmatter.title}>
     <!-- md content -->
-    <div class="sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
-        <div class="m-auto w-full text-gray-400">
-            <p class="text-white text-2xl sm:text-3xl">{frontmatter.title}</p>
-            <p class="text-gray-400">Last updated: {frontmatter.pubDate.slice(0, 10)}</p>
-            
-            <div class="border-b border-gray-900 mt-4 mb-4"></div>
-            
-            <slot />
-        </div>
-    </div>
+    <main>
+        <AnimatedScroll client:load>
+            <div class="sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
+                <div class="m-auto w-full text-gray-400">
+                    <p class="text-white text-2xl sm:text-3xl">{frontmatter.title}</p>
+                    <p class="text-gray-400">{frontmatter.description}</p>
+                    <p class="text-gray-400">Last updated: {moment(date).fromNow()}</p>
+                    
+                    <div class="border-b border-gray-900 mt-4 mb-4"></div>
+                    
+                    <slot />
+                </div>
+            </div>
+        </AnimatedScroll>
+    </main>
 </Layout>
