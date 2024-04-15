@@ -18,11 +18,11 @@ import Navbar from "../components/Navbar.astro";
 		<meta property="og:description" content="This is my personal website." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/jpg" href="/logo.jpg" />
+		<link href="https://unpkg.com/pattern.css@1.0.0/dist/pattern.min.css" rel="stylesheet" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body class="bg-gray-950">
-		<!-- navbar -->
 		<Navbar />
 
 		<slot />

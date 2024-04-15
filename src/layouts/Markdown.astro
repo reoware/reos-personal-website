@@ -23,7 +23,7 @@ const date = moment(frontmatter.pubDate.slice(0, 10));
                     <p class="text-gray-400">Last updated: {moment(date).fromNow()}</p>
                     <div class="flex items-center gap-2">
                         {frontmatter.tags.slice(0, 4).map((tag) => (
-                            <div class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-purple-800 text-purple-100">{tag}</div>
+                            <div class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium border border-purple-800 text-purple-800">{tag}</div>
                         ))}
                         {frontmatter.tags.length > 4 && (
                             <p class="text-gray-400">+{frontmatter.tags.length - 4} more</p>
