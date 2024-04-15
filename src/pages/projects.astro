@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AnimatedScroll from "../components/AnimatedScroll";
+
+const projects = await Astro.glob("../pages/projects/*.md");
 ---
 
 <Layout title="Projects">
@@ -10,6 +12,14 @@ import AnimatedScroll from "../components/AnimatedScroll";
 			<div class="sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
 				<div class="my-auto w-full">
 					<p class="text-white text-2xl sm:text-3xl mb-4 text-center">Projects</p>
+                    <div class="grid grid-cols-3 gap-4">
+                        {projects.map((project) => (
+                            <div class="transition-all duriation-150 rounded shadow-lg p-4 border border-gray-900 cursor-pointer hover:bg-gray-900">
+                                <p class="text-white text-xl">{project.frontmatter.title}</p>
+                                <p class="text-gray-400 truncate">{project.frontmatter.description}</p>
+                            </div>
+                        ))}
+                    </div>
 				</div>
 			</div>
 		</AnimatedScroll>
