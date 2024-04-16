@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AnimatedScroll from "../components/AnimatedScroll";
-
-const projects = await Astro.glob("../pages/projects/*.md");
 ---
 
 <Layout title="Projects">
@@ -13,13 +11,19 @@ const projects = await Astro.glob("../pages/projects/*.md");
 				<div class="mt-96 w-full">
 					<p class="text-white text-2xl sm:text-3xl text-center mb-4">Projects</p>
                     <div class="border-b-2 border-purple-800 w-10 mb-4 mx-auto"></div>
-                    <ul class="grid grid-cols-3 gap-4">
-                        {projects.map((project) => (
-                            <a href={project.url} class="transition-all duriation-150 rounded shadow-lg p-4 border border-gray-900 hover:bg-gray-900">
-                                <p class="text-white sm:text-xl">{project.frontmatter.title}</p>
-                                <p class="text-gray-400 truncate">{project.frontmatter.description}</p>
-                            </a>
-                        ))}
+                    <div class="grid grid-cols-3 gap-4">
+                        <a href="https://github.com/ophx/ophx-personal-website" target="_blank" class="transition-all duriation-150 rounded shadow-lg p-4 border border-gray-900 hover:bg-gray-900">
+                            <img src="https://upload-systems.is-a.fail/6xQM94XuR.png" class="h-[194]">
+                            <p class="text-white sm:text-xl">This Website</p>
+                            <p class="text-gray-400 truncate">My personal website</p>
+                            <p class="text-gray-400 truncate">AstroJS, TailwindCSS</p>
+                        </a>
+                        <a href="https://github.com/ophx/ophxbb" target="_blank" class="transition-all duriation-150 rounded shadow-lg p-4 border border-gray-900 hover:bg-gray-900">
+                            <img src="https://cdn.upload.systems/uploads/4D6w1HdA.png" class="h-[194]">
+                            <p class="text-white sm:text-xl">OphxBB</p>
+                            <p class="text-gray-400 truncate">A cheat panel template</p>
+                            <p class="text-gray-400 truncate">PHP, MySQL, TailwindCSS, JavaScript</p>
+                        </a>
                     </div>
 				</div>
 			</div>
