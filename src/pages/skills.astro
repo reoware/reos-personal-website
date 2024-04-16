@@ -1,6 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AnimatedScroll from "../components/AnimatedScroll";
+
+const skills = [
+	"HTML",
+	"PHP",
+	"React",
+	"Next",
+	"Astro",
+	"Vue",
+	"Python",
+	"Go",
+	"Java",
+	"JavaScript",
+	"TypeScript",
+	"C++",
+	"C#",
+	"Tailwind",
+	"CSS",
+	"SASS",
+	"MySQL",
+	"MongoDB",
+];
 ---
 
 <Layout title="Skills">
@@ -11,6 +32,13 @@ import AnimatedScroll from "../components/AnimatedScroll";
 				<div class="mt-96 w-full">
 					<p class="text-white text-2xl sm:text-3xl mb-4 text-center">Skills</p>
                     <div class="border-b-2 border-purple-800 w-10 mb-4 mx-auto"></div>
+					<div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+						{skills.map((skill) => (
+							<div class="rounded shadow-lg p-4 border border-gray-900">
+								<p class="text-gray-400">{skill}</p>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		</AnimatedScroll>
