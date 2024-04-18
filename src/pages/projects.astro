@@ -1,6 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AnimatedScroll from "../components/AnimatedScroll";
+
+const projects = [
+    {
+        name: "This Website",
+        description: "My personal website",
+        stack: "AstroJS, TailwindCSS",
+        imageSrc: "https://upload-systems.is-a.fail/6xQM94XuR.png",
+        githubLink: "https://github.com/ophx/ophx-personal-website"
+    },
+    {
+        name: "OphxBB",
+        description: "A cheat panel template",
+        stack: "PHP, MySQL, TailwindCSS, JavaScript",
+        imageSrc: "https://cdn.upload.systems/uploads/4D6w1HdA.png",
+        githubLink: "https://github.com/ophx/ophxbb"
+    }
+];
 ---
 
 <Layout title="Projects">
@@ -12,18 +29,14 @@ import AnimatedScroll from "../components/AnimatedScroll";
 					<p class="text-white text-2xl sm:text-3xl text-center mb-4">Projects</p>
                     <div class="border-b-2 border-purple-800 w-10 mb-4 mx-auto"></div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <a href="https://github.com/ophx/ophx-personal-website" target="_blank" class="transition-all duriation-150 rounded shadow-lg p-4 border border-gray-900 hover:bg-gray-900">
-                            <img src="https://upload-systems.is-a.fail/6xQM94XuR.png" class="h-[194]">
-                            <p class="text-white sm:text-xl">This Website</p>
-                            <p class="text-gray-400 truncate">My personal website</p>
-                            <p class="text-gray-400 truncate">AstroJS, TailwindCSS</p>
-                        </a>
-                        <a href="https://github.com/ophx/ophxbb" target="_blank" class="transition-all duriation-150 rounded shadow-lg p-4 border border-gray-900 hover:bg-gray-900">
-                            <img src="https://cdn.upload.systems/uploads/4D6w1HdA.png" class="h-[194]">
-                            <p class="text-white sm:text-xl">OphxBB</p>
-                            <p class="text-gray-400 truncate">A cheat panel template</p>
-                            <p class="text-gray-400 truncate">PHP, MySQL, TailwindCSS, JavaScript</p>
-                        </a>
+                        {projects.map((project) => (
+                            <a href={project.githubLink} target="_blank" class="transition-all duriation-150 rounded shadow-lg p-4 border border-gray-900 hover:bg-gray-900">
+                                <img src={project.imageSrc} class="h-[194]">
+                                <p class="text-white sm:text-xl">{project.name}</p>
+                                <p class="text-gray-400 truncate">{project.description}</p>
+                                <p class="text-gray-400 truncate">{project.stack}</p>
+                            </a>
+                        ))}
                     </div>
 				</div>
 			</div>

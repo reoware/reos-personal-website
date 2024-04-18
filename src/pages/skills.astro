@@ -3,24 +3,78 @@ import Layout from "../layouts/Layout.astro";
 import AnimatedScroll from "../components/AnimatedScroll";
 
 const skills = [
-	"HTML",
-	"PHP",
-	"React",
-	"Next",
-	"Astro",
-	"Vue",
-	"Python",
-	"Go",
-	"Java",
-	"JavaScript",
-	"TypeScript",
-	"C++",
-	"C#",
-	"Tailwind",
-	"CSS",
-	"SASS",
-	"MySQL",
-	"MongoDB",
+	{
+		name: "HTML",
+		icon: "devicon-html5-plain colored"
+	},
+	{
+		name: "PHP",
+		icon: "devicon-php-plain colored"
+	},
+	{
+		name: "React",
+		icon: "devicon-react-original colored"
+	},
+	{
+		name: "Next",
+		icon: "devicon-nextjs-plain colored"
+	},
+	{
+		name: "Astro",
+		icon: "devicon-astro-plain colored"
+	},
+	{
+		name: "Vue",
+		icon: "devicon-vuejs-plain colored"
+	},
+	{
+		name: "Python",
+		icon: "devicon-python-plain colored"
+	},
+	{
+		name: "Go",
+		icon: "devicon-go-plain colored"
+	},
+	{
+		name: "Java",
+		icon: "devicon-java-plain colored"
+	},
+	{
+		name: "JavaScript",
+		icon: "devicon-javascript-plain colored"
+	},
+	{
+		name: "TypeScript",
+		icon: "devicon-typescript-plain colored"
+	},
+	{
+		name: "C++",
+		icon: "devicon-cplusplus-plain colored"
+	},
+	{
+		name: "C#",
+		icon: "devicon-csharp-plain colored"
+	},
+	{
+		name: "Tailwind",
+		icon: "devicon-tailwindcss-original colored"
+	},
+	{
+		name: "CSS",
+		icon: "devicon-css3-plain colored"
+	},
+	{
+		name: "SASS",
+		icon: "devicon-sass-original colored"
+	},
+	{
+		name: "MySQL",
+		icon: "devicon-mysql-original colored"
+	},
+	{
+		name: "MongoDB",
+		icon: "devicon-mongodb-plain colored"
+	}
 ];
 ---
 
@@ -35,7 +89,12 @@ const skills = [
 					<div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
 						{skills.map((skill) => (
 							<div class="rounded shadow-lg p-4 border border-gray-900">
-								<p class="text-gray-400">{skill}</p>
+								<div class="flex items-center gap-2">
+									<div class="text-2xl">
+										<i class={skill.icon}></i>
+									</div>
+									<p class="text-gray-400">{skill.name}</p>
+								</div>
 							</div>
 						))}
 					</div>
