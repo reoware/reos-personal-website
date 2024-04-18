@@ -31,7 +31,7 @@ const projects = [
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {projects.map((project) => (
                             <a href={project.githubLink} target="_blank" class="transition-all duriation-150 rounded shadow-lg p-4 border border-gray-900 hover:bg-gray-900">
-                                <img src={project.imageSrc} class="h-[194]">
+                                <img src={project.imageSrc} class="h-[194]" />
                                 <p class="text-white sm:text-xl">{project.name}</p>
                                 <p class="text-gray-400 truncate">{project.description}</p>
                                 <p class="text-gray-400 truncate">{project.stack}</p>
