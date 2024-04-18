@@ -6,7 +6,7 @@ const pathname = new URL(Astro.request.url).pathname;
     <div class="space-y-4 container px-32 mx-auto">
         <div class="flex justify-between items-center">
             <div>
-                <img draggable="false" src="/logo.jpg" class="rounded-full shadow-lg h-8 w-8">
+                <img draggable="false" src="/logo.jpg" class="rounded-full shadow-lg h-8 w-8" />
             </div>
             <div class="flex items-center gap-8">
                 <a href="/" class={`transition-all duriation-150 ${pathname === "/" ? "text-white" : "text-gray-400 hover:text-white"} font-medium`}>
