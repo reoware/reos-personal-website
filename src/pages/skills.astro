@@ -78,6 +78,31 @@ const skills = [
 ];
 ---
 
+<style>
+	.marquee-container {
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	.marquee-content {
+		animation: marquee 50s linear infinite;
+	}
+	@keyframes marquee {
+		0% { transform: translateX(100%); }
+		100% { transform: translateX(-100%); }
+	}
+</style>
+<script type="module">
+	function enableMarquee() {
+	  	const targets = document.querySelectorAll(".marquee-content");
+		window.addEventListener("scroll", () => {
+			targets.forEach((target) => {
+				target.style.transform = `translateX(${window.scrollY / 10}px)`;
+			});
+		});
+	}
+	enableMarquee();
+</script>
+
 <Layout title="Skills">
 	<main>
 		<!-- hero -->
@@ -86,17 +111,19 @@ const skills = [
 				<div class="mt-96 w-full">
 					<p class="text-white text-2xl sm:text-3xl mb-4 text-center">Skills</p>
                     <div class="border-b-2 border-purple-800 w-10 mb-4 mx-auto"></div>
-					<div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-						{skills.map((skill) => (
-							<div class="rounded shadow-lg p-4 border border-gray-900">
-								<div class="flex items-center gap-2">
-									<div class="text-2xl">
-										<i class={skill.icon}></i>
+					<div class="marquee-container">
+						<div class="flex items-center gap-4 marquee-content">
+							{skills.map((skill) => (
+								<div class="rounded shadow-lg p-4 border border-gray-900">
+									<div class="flex items-center gap-2">
+										<div class="text-2xl">
+											<i class={skill.icon}></i>
+										</div>
+										<p class="text-gray-400">{skill.name}</p>
 									</div>
-									<p class="text-gray-400">{skill.name}</p>
 								</div>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
