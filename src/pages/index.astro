@@ -150,6 +150,10 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 										</div>
 									</div>
 								))}
+								{activitiesWithElapsedTime.length === 0 && (
+									<div class="border-b border-gray-800 mb-4 mt-4"></div>
+									<p class="text-gray-400 text-sm">Not Playing Anything...</p>
+								)}
 								{spotify && (
 									<div class="border-b border-gray-800 mb-4 mt-4"></div>
 									<p class="text-white text-sm font-medium mb-2 uppercase">Listening To Spotify</p>
