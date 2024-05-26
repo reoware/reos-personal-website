@@ -4,8 +4,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-
-import Navbar from "../components/Navbar.astro";
 ---
 
 <!doctype html>
@@ -24,8 +22,6 @@ import Navbar from "../components/Navbar.astro";
 		<title>{title}</title>
 	</head>
 	<body class="bg-gray-950">
-		<Navbar />
-
 		<slot />
 	</body>
 </html>
