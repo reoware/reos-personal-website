@@ -146,15 +146,15 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 										</div>
 									</div>
 									<div>
-										<a href={`https://discord.com/users/${user.id}`} target="_blank" class="bg-green-500/75 rounded-lg shadow-lg text-white font-medium px-4 py-2 text-sm">
+										<a href={`https://discord.com/users/${user.id}`} target="_blank" class="transition-all duriation-150 bg-green-500/75 hover:bg-green-600/75 rounded-lg shadow-lg text-white font-medium px-4 py-2 text-sm">
 											Send Friend Request
 										</a>
 									</div>
 								</div>
-								<div class="bg-gray-900 rounded-lg shadow-lg p-4 mt-4">
+								<div class="bg-gray-900 rounded-lg shadow-lg p-4 mt-4 h-60 max-h-60 overflow-y-scroll scrollbar">
 									<div>
 										<p class="text-white text-sm font-medium uppercase">About Me</p>
-										<span class="text-gray-400">
+										<p class="text-gray-400 text-sm">
 											ⓘ This user likes to make websites
 											<br>
 											<a href="https://ophx.pages.dev/" target="_blank" class="text-blue-500 hover:underline">
@@ -164,7 +164,7 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 											<a href="https://greenfrogbot.lol/" target="_blank" class="text-blue-500 hover:underline">
 												https://greenfrogbot.lol/
 											</a>
-										</span>
+										</p>
 									</div>
 									{activitiesWithElapsedTime.map((activity) => (
 										<p class="text-white text-sm font-medium mb-1 uppercase mt-4">Playing A Game</p>
@@ -214,3 +214,10 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 		</AnimatedScroll>
 	</main>
 </Layout>
+
+<style>
+	.scrollbar {
+		scrollbar-width: thin;
+		scrollbar-color: #374151 transparent;
+	}
+</style>
