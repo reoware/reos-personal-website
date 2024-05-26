@@ -106,7 +106,7 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 							</div>
 						</div>
 						<div class="w-96 max-w-96">
-							<div class="border border-gray-800 p-4 rounded-lg shadow-lg">
+							<div class="border border-gray-900 p-4 rounded-lg shadow-lg">
 								<div class="flex items-start gap-4">
 									<div>
 										<div class="relative">
@@ -116,7 +116,7 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 									</div>
 									<div>
 										<p class="text-white font-medium text-2xl">{user.username}</p>
-										<div class="flex items-center">
+										<div class="flex items-center bg-gray-900 rounded-lg shadow-lg px-1 py-0.5 mt-2">
 											{badge_HYPESQUAD_ONLINE_HOUSE_1 && (
 												<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbravery.svg" class="h-7 w-7" />
 											)}
@@ -133,7 +133,7 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 									</div>
 								</div>
 								{activitiesWithElapsedTime.map((activity) => (
-									<div class="border-b border-gray-800 mb-4 mt-4"></div>
+									<div class="border-b border-gray-900 mb-4 mt-4"></div>
 									<p class="text-white text-sm font-medium mb-2 uppercase">Playing A Game</p>
 									<div class="flex items-start gap-4">
 										<div>
@@ -151,11 +151,11 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 									</div>
 								))}
 								{activitiesWithElapsedTime.length === 0 && (
-									<div class="border-b border-gray-800 mb-4 mt-4"></div>
+									<div class="border-b border-gray-900 mb-4 mt-4"></div>
 									<p class="text-gray-400 text-sm">Not Playing Anything...</p>
 								)}
 								{spotify && (
-									<div class="border-b border-gray-800 mb-4 mt-4"></div>
+									<div class="border-b border-gray-900 mb-4 mt-4"></div>
 									<p class="text-white text-sm font-medium mb-2 uppercase">Listening To Spotify</p>
 									<div class="flex items-start gap-4">
 										<div>
