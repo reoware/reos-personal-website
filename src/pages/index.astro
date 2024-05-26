@@ -155,10 +155,7 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 									<p class="text-white text-sm font-medium mb-2 uppercase">Listening To Spotify</p>
 									<div class="flex items-start gap-4">
 										<div>
-											<div class="relative">
-												<img draggable="false" src={spotify.album_art_url} class="rounded-lg shadow-lg h-16 w-16" />
-												<img draggable="false" src="https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png" class="absolute bottom-0 left-11 transform translate-y-1/4 w-8 h-8 border-4 border-gray-950 bg-gray-950 rounded-full" />
-											</div>
+											<img draggable="false" src={spotify.album_art_url} class="rounded-lg shadow-lg h-16 w-16" />
 										</div>
 										<div>
 											<a href={`https://open.spotify.com/track/${spotify.track_id}`} target="_blank" class="text-white font-medium hover:underline">
