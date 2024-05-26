@@ -166,7 +166,7 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 										</div>
 									</div>
 								))}
-								{activitiesWithElapsedTime.length === 0 && (
+								{activitiesWithElapsedTime.length === 0 && !spotify && (
 									<div class="border-b border-gray-900 mb-4 mt-4"></div>
 									<p class="text-gray-400 text-sm">Not Playing Anything...</p>
 								)}
