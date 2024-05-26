@@ -19,9 +19,21 @@ const activitiesWithElapsedTime = activities.map((activity) => {
     const minutes = Math.floor(elapsedTimeMs / (1000 * 60)) % 60;
     const hours = Math.floor(elapsedTimeMs / (1000 * 60 * 60)) % 24;
     const formattedElapsedTime = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+	const baseUrlLarge = activity.assets.large_image.split("/");
+	const indexLarge = baseUrlLarge.findIndex((part) => part.startsWith("https"));
+	const formattedImageUrlLarge = "https://" + baseUrlLarge.slice(indexLarge + 1).join("/");
+
+	if (activity.assets.small_image) {
+		var baseUrlSmall = activity.assets.small_image.split("/");
+		var indexSmall = baseUrlSmall.findIndex((part) => part.startsWith("https"));
+		var formattedImageUrlSmall = "https://" + baseUrlSmall.slice(indexSmall + 1).join("/");
+	}
     return {
         ...activity,
-        formattedElapsedTime: formattedElapsedTime
+        formattedElapsedTime: formattedElapsedTime,
+		formattedImageUrlLarge: formattedImageUrlLarge,
+		formattedImageUrlSmall: formattedImageUrlSmall,
     };
 });
 
@@ -138,15 +150,19 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 									<div class="flex items-start gap-4">
 										<div>
 											<div class="relative">
-												<img draggable="false" src={`https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/${activity.assets.large_image.split("/").pop()}`} class="rounded-lg shadow-lg h-16 w-16" />
-												<img draggable="false" src={`https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/${activity.assets.small_image.split("/").pop()}`} class="absolute bottom-0 left-11 transform translate-y-1/4 w-8 h-8 border-4 border-gray-950 bg-gray-950 rounded-full" />
+												<img draggable="false" src={activity.formattedImageUrlLarge} class="rounded-lg shadow-lg h-16 w-16" />
+												{activity.assets.small_image && (
+													<img draggable="false" src={activity.formattedImageUrlSmall} class="absolute bottom-0 left-11 transform translate-y-1/4 w-8 h-8 border-4 border-gray-950 bg-gray-950 rounded-full" />
+												)}
 											</div>
 										</div>
 										<div>
 											<p class="text-white font-medium">{activity.name}</p>
 											<p class="text-gray-400 text-sm">{activity.state}</p>
 											<p class="text-gray-400 text-sm">{activity.details}</p>
-											<p class="text-gray-400 text-sm">{activity.formattedElapsedTime} elapsed</p>
+											{activity.timestamps.hasOwnProperty("start") && (
+												<p class="text-gray-400 text-sm">{activity.formattedElapsedTime} elapsed</p>
+											)}
 										</div>
 									</div>
 								))}
