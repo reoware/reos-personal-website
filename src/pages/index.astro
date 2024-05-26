@@ -117,75 +117,95 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 								</a>
 							</div>
 						</div>
-						<div class="w-96 max-w-96">
+						<div class="w-[490px] max-w-[490px]">
 							<div class="border border-gray-900 p-4 rounded-lg shadow-lg">
-								<div class="flex items-start gap-4">
-									<div>
-										<div class="relative">
-											<img draggable="false" src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=4096`} class="rounded-full shadow-lg h-16 w-16" />
-											<img draggable="false" src={`https://cdn.discordapp.com/emojis/${statusVar}.webp?size=96&quality=lossless`} class="absolute bottom-0 left-11 transform translate-y-1/4 w-6 h-6 border-4 border-gray-950 bg-gray-950 rounded-full" />
-										</div>
-									</div>
-									<div>
-										<p class="text-white font-medium text-2xl">{user.username}</p>
-										<div class="flex items-center bg-gray-900 rounded-lg shadow-lg px-1 py-0.5 mt-2">
-											{badge_HYPESQUAD_ONLINE_HOUSE_1 && (
-												<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbravery.svg" class="h-7 w-7" />
-											)}
-											{badge_HYPESQUAD_ONLINE_HOUSE_2 && (
-												<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbrilliance.svg" class="h-7 w-7" />
-											)}
-											{badge_HYPESQUAD_ONLINE_HOUSE_3 && (
-												<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbalance.svg" class="h-7 w-7" />
-											)}
-											{badge_ACTIVE_DEVELOPER && (
-												<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/activedeveloper.svg" class="h-7 w-7" />
-											)}
-										</div>
-									</div>
-								</div>
-								{activitiesWithElapsedTime.map((activity) => (
-									<div class="border-b border-gray-900 mb-4 mt-4"></div>
-									<p class="text-white text-sm font-medium mb-2 uppercase">Playing A Game</p>
+								<div class="flex items-center justify-between">
 									<div class="flex items-start gap-4">
 										<div>
 											<div class="relative">
-												<img draggable="false" src={activity.formattedImageUrlLarge} class="rounded-lg shadow-lg h-16 w-16" />
-												{activity.assets.small_image && (
-													<img draggable="false" src={activity.formattedImageUrlSmall} class="absolute bottom-0 left-11 transform translate-y-1/4 w-8 h-8 border-4 border-gray-950 bg-gray-950 rounded-full" />
-												)}
+												<img draggable="false" src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=4096`} class="rounded-full shadow-lg h-20 w-20" />
+												<img draggable="false" src={`https://cdn.discordapp.com/emojis/${statusVar}.webp?size=96&quality=lossless`} class="absolute bottom-0 left-14 transform translate-y-1/4 w-6 h-6 border-4 border-gray-950 bg-gray-950 rounded-full" />
 											</div>
 										</div>
 										<div>
-											<p class="text-white font-medium">{activity.name}</p>
-											<p class="text-gray-400 text-sm">{activity.state}</p>
-											<p class="text-gray-400 text-sm">{activity.details}</p>
-											{activity.timestamps.hasOwnProperty("start") && (
-												<p class="text-gray-400 text-sm">{activity.formattedElapsedTime} elapsed</p>
-											)}
+											<p class="text-white font-medium text-2xl">{user.username}</p>
+											<div class="flex items-center bg-gray-900 rounded-lg shadow-lg px-1 py-0.5 mt-2">
+												{badge_HYPESQUAD_ONLINE_HOUSE_1 && (
+													<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbravery.svg" class="h-7 w-7" />
+												)}
+												{badge_HYPESQUAD_ONLINE_HOUSE_2 && (
+													<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbrilliance.svg" class="h-7 w-7" />
+												)}
+												{badge_HYPESQUAD_ONLINE_HOUSE_3 && (
+													<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbalance.svg" class="h-7 w-7" />
+												)}
+												{badge_ACTIVE_DEVELOPER && (
+													<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/activedeveloper.svg" class="h-7 w-7" />
+												)}
+											</div>
 										</div>
 									</div>
-								))}
-								{activitiesWithElapsedTime.length === 0 && !spotify && (
-									<div class="border-b border-gray-900 mb-4 mt-4"></div>
-									<p class="text-gray-400 text-sm">Not Playing Anything...</p>
-								)}
-								{spotify && (
-									<div class="border-b border-gray-900 mb-4 mt-4"></div>
-									<p class="text-white text-sm font-medium mb-2 uppercase">Listening To Spotify</p>
-									<div class="flex items-start gap-4">
-										<div>
-											<img draggable="false" src={spotify.album_art_url} class="rounded-lg shadow-lg h-16 w-16" />
-										</div>
-										<div>
-											<a href={`https://open.spotify.com/track/${spotify.track_id}`} target="_blank" class="text-white font-medium hover:underline">
-												{spotify.song}
+									<div>
+										<a href=`https://discord.com/users/${user.id}` target="_blank" class="bg-green-500/75 rounded-lg shadow-lg text-white font-medium px-4 py-2 text-sm">
+											Send Friend Request
+										</a>
+									</div>
+								</div>
+								<div class="bg-gray-900 rounded-lg shadow-lg p-4 mt-4">
+									<div>
+										<p class="text-white text-sm font-medium uppercase">About Me</p>
+										<span class="text-gray-400">
+											ⓘ This user likes to make websites
+											<br>
+											<a href="https://ophx.pages.dev/" target="_blank" class="text-blue-500 hover:underline">
+												https://ophx.pages.dev/
 											</a>
-											<p class="text-gray-400 text-sm">By {spotify.artist}</p>
-											<p class="text-gray-400 text-sm">On {spotify.album}</p>
-										</div>
+											<br />
+											<a href="https://greenfrogbot.lol/" target="_blank" class="text-blue-500 hover:underline">
+												https://greenfrogbot.lol/
+											</a>
+										</span>
 									</div>
-								)}
+									{activitiesWithElapsedTime.map((activity) => (
+										<p class="text-white text-sm font-medium mb-1 uppercase mt-4">Playing A Game</p>
+										<div class="flex items-start gap-4">
+											<div>
+												<div class="relative">
+													<img draggable="false" src={activity.formattedImageUrlLarge} class="rounded-lg shadow-lg h-16 w-16" />
+													{activity.assets.small_image && (
+														<img draggable="false" src={activity.formattedImageUrlSmall} class="absolute bottom-0 left-11 transform translate-y-1/4 w-8 h-8 border-4 border-gray-900 bg-gray-900 rounded-full" />
+													)}
+												</div>
+											</div>
+											<div>
+												<p class="text-white font-medium">{activity.name}</p>
+												<p class="text-gray-400 text-sm">{activity.state}</p>
+												<p class="text-gray-400 text-sm">{activity.details}</p>
+												{activity.timestamps.hasOwnProperty("start") && (
+													<p class="text-gray-400 text-sm">{activity.formattedElapsedTime} elapsed</p>
+												)}
+											</div>
+										</div>
+									))}
+									{activitiesWithElapsedTime.length === 0 && !spotify && (
+										<p class="text-gray-400 text-sm mt-4">Not Playing Anything...</p>
+									)}
+									{spotify && (
+										<p class="text-white text-sm font-medium mb-1 uppercase mt-4">Listening To Spotify</p>
+										<div class="flex items-start gap-4">
+											<div>
+												<img draggable="false" src={spotify.album_art_url} class="rounded-lg shadow-lg h-16 w-16" />
+											</div>
+											<div>
+												<a href={`https://open.spotify.com/track/${spotify.track_id}`} target="_blank" class="text-white font-medium hover:underline">
+													{spotify.song}
+												</a>
+												<p class="text-gray-400 text-sm">By {spotify.artist}</p>
+												<p class="text-gray-400 text-sm">On {spotify.album}</p>
+											</div>
+										</div>
+									)}
+								</div>
 							</div>
 						</div>
 					</div>
