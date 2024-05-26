@@ -9,7 +9,7 @@ const user = data.data.discord_user;
 const spotify = data.data.spotify;
 const status = data.data.discord_status;
 let activities = data.data.activities;
-let statusVar = "border-4 border-gray-500";
+let statusVar;
 
 activities = activities.filter(activity => activity.name !== "Spotify");
 const activitiesWithElapsedTime = activities.map((activity) => {
