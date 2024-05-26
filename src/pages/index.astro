@@ -11,7 +11,7 @@ const status = data.data.discord_status;
 let activities = data.data.activities;
 let statusVar;
 
-activities = activities.filter(activity => activity.name !== "Spotify");
+activities = activities.filter((activity) => activity.name !== "Spotify");
 const activitiesWithElapsedTime = activities.map((activity) => {
 	const currentTime = Date.now();
     const elapsedTimeMs = currentTime - activity.timestamps.start;
