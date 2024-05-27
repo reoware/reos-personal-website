@@ -77,21 +77,24 @@ import AnimatedScroll from "../components/AnimatedScroll";
 </Layout>
 
 <script is:inline>
-	const fetchData = async () => {
-		const response = await fetch("https://api.lanyard.rest/v1/users/459738097622712320");
-		const data = await response.json();
-		const user = data.data.discord_user;
-		const spotify = data.data.spotify;
-		const status = data.data.discord_status;
-		let activities = data.data.activities;
-		let statusVar;
+	const userAvatar = document.querySelector("#userAvatar");
+	const userStatus = document.querySelector("#userStatus");
+	const userName = document.querySelector("#userName");
+	const braveryBadge = document.querySelector("#braveryBadge");
+	const brillianceBadge = document.querySelector("#brillianceBadge");
+	const balanceBadge = document.querySelector("#balanceBadge");
+	const activeDevBadge = document.querySelector("#activeDevBadge");
+	const activitiesContainer = document.querySelector("#activitiesContainer");
+	let statusVar;
 
+	const setUserStatus = (status) => {
 		switch (status) {
 			case "dnd":
 				statusVar = "1242127177147744327";
 				break;
 			case "offline":
 				statusVar = "1242127179655942195";
+				break;
 			case "online":
 				statusVar = "1242127175902171136";
 				break;
@@ -102,17 +105,46 @@ import AnimatedScroll from "../components/AnimatedScroll";
 				statusVar = "1242127179655942195";
 				break;
 		}
+	};
 
+	const setBadges = (flags) => {
 		const HYPESQUAD_ONLINE_HOUSE_1 = 64;
 		const HYPESQUAD_ONLINE_HOUSE_2 = 128;
 		const HYPESQUAD_ONLINE_HOUSE_3 = 256;
 		const ACTIVE_DEVELOPER = 4194304;
-		const flags = user.public_flags;
 		const badge_HYPESQUAD_ONLINE_HOUSE_1 = (flags & HYPESQUAD_ONLINE_HOUSE_1) === HYPESQUAD_ONLINE_HOUSE_1;
 		const badge_HYPESQUAD_ONLINE_HOUSE_2 = (flags & HYPESQUAD_ONLINE_HOUSE_2) === HYPESQUAD_ONLINE_HOUSE_2;
 		const badge_HYPESQUAD_ONLINE_HOUSE_3 = (flags & HYPESQUAD_ONLINE_HOUSE_3) === HYPESQUAD_ONLINE_HOUSE_3;
 		const badge_ACTIVE_DEVELOPER = (flags & ACTIVE_DEVELOPER) === ACTIVE_DEVELOPER;
 
+		if (badge_HYPESQUAD_ONLINE_HOUSE_1) {
+			braveryBadge.src = "https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbravery.svg";
+			braveryBadge.style.display = "block";
+		}
+		if (badge_HYPESQUAD_ONLINE_HOUSE_2) {
+			brillianceBadge.src = "https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbrilliance.svg";
+			brillianceBadge.style.display = "block";
+		}
+		if (badge_HYPESQUAD_ONLINE_HOUSE_3) {
+			balanceBadge.src = "https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbalance.svg";
+			balanceBadge.style.display = "block";
+		}
+		if (badge_ACTIVE_DEVELOPER) {
+			activeDevBadge.src = "https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/activedeveloper.svg";
+			activeDevBadge.style.display = "block";
+		}
+	};
+
+	const fetchData = async () => {
+		const response = await fetch("https://api.lanyard.rest/v1/users/459738097622712320");
+		const data = await response.json();
+		const spotify = data.data.spotify;
+		const status = data.data.discord_status;
+
+		setUserStatus(status);
+		userStatus.src = `https://cdn.discordapp.com/emojis/${statusVar}.webp?size=96&quality=lossless`;
+
+		let activities = data.data.activities;
 		activities = activities.filter((activity) => activity.name !== "Spotify");
 		const customActivities = activities.map((activity) => {
 			const currentTime = Date.now();
@@ -145,36 +177,7 @@ import AnimatedScroll from "../components/AnimatedScroll";
 			const remainingSeconds = Math.floor(seconds % 60);
 			return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
 		};
-
-		const userAvatar = document.querySelector("#userAvatar");
-		const userStatus = document.querySelector("#userStatus");
-		const userName = document.querySelector("#userName");
-		userAvatar.src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=4096`;
-		userStatus.src = `https://cdn.discordapp.com/emojis/${statusVar}.webp?size=96&quality=lossless`;
-		userName.innerHTML = `${user.username}`;
-
-		const braveryBadge = document.querySelector("#braveryBadge");
-		const brillianceBadge = document.querySelector("#brillianceBadge");
-		const balanceBadge = document.querySelector("#balanceBadge");
-		const activeDevBadge = document.querySelector("#activeDevBadge");
-		if (badge_HYPESQUAD_ONLINE_HOUSE_1) {
-			braveryBadge.src = "https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbravery.svg";
-			braveryBadge.style.display = "block";
-		}
-		if (badge_HYPESQUAD_ONLINE_HOUSE_2) {
-			brillianceBadge.src = "https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbrilliance.svg";
-			brillianceBadge.style.display = "block";
-		}
-		if (badge_HYPESQUAD_ONLINE_HOUSE_3) {
-			balanceBadge.src = "https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbalance.svg";
-			balanceBadge.style.display = "block";
-		}
-		if (badge_ACTIVE_DEVELOPER) {
-			activeDevBadge.src = "https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/activedeveloper.svg";
-			activeDevBadge.style.display = "block";
-		}
 		
-		const activitiesContainer = document.querySelector("#activitiesContainer");
 		activitiesContainer.innerHTML = "";
 		if (customActivities.length === 0 && !spotify) {
 			activitiesContainer.innerHTML = `<p class="text-gray-400 text-sm">Not Playing Anything...</p>`;
@@ -244,7 +247,19 @@ import AnimatedScroll from "../components/AnimatedScroll";
 		}
 	};
 
+	const fetchUser = async () => {
+		const response = await fetch("https://api.lanyard.rest/v1/users/459738097622712320");
+		const data = await response.json();
+		const user = data.data.discord_user;
+
+		userAvatar.src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=4096`;
+		userName.innerHTML = `${user.username}`;
+
+		setBadges(user.public_flags);
+	};
+	fetchUser();
+
 	setInterval(() => {
 		fetchData();
-	}, 1000);
+	}, 500);
 </script>
