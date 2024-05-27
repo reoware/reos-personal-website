@@ -126,56 +126,35 @@ const formatTime = (seconds) => {
 						</div>
 						<div class="w-[490px] max-w-[490px]">
 							<div class="border border-gray-900 p-4 rounded-lg shadow-lg">
-								<div class="flex items-center justify-between">
-									<div class="flex items-start gap-4">
-										<div>
-											<div class="relative">
-												<img draggable="false" src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=4096`} class="rounded-full shadow-lg h-20 w-20" />
-												<img draggable="false" src={`https://cdn.discordapp.com/emojis/${statusVar}.webp?size=96&quality=lossless`} class="absolute bottom-0 left-14 transform translate-y-1/4 w-6 h-6 border-4 border-gray-950 bg-gray-950 rounded-full" />
-											</div>
-										</div>
-										<div>
-											<p class="text-white font-medium text-2xl">{user.username}</p>
-											<div class="flex items-center bg-gray-900 rounded-lg shadow-lg px-1 py-0.5 mt-2">
-												{badge_HYPESQUAD_ONLINE_HOUSE_1 && (
-													<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbravery.svg" class="h-7 w-7" />
-												)}
-												{badge_HYPESQUAD_ONLINE_HOUSE_2 && (
-													<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbrilliance.svg" class="h-7 w-7" />
-												)}
-												{badge_HYPESQUAD_ONLINE_HOUSE_3 && (
-													<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbalance.svg" class="h-7 w-7" />
-												)}
-												{badge_ACTIVE_DEVELOPER && (
-													<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/activedeveloper.svg" class="h-7 w-7" />
-												)}
-											</div>
+								<div class="flex items-start gap-4">
+									<div>
+										<div class="relative">
+											<img draggable="false" src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=4096`} class="rounded-full shadow-lg h-20 w-20" />
+											<img draggable="false" src={`https://cdn.discordapp.com/emojis/${statusVar}.webp?size=96&quality=lossless`} class="absolute bottom-0 left-14 transform translate-y-1/4 w-6 h-6 border-4 border-gray-950 bg-gray-950 rounded-full" />
 										</div>
 									</div>
 									<div>
-										<a href={`https://discord.com/users/${user.id}`} target="_blank" class="transition-all duriation-150 bg-green-500/75 hover:bg-green-600/75 rounded-lg shadow-lg text-white font-medium px-4 py-2 text-sm">
-											Send Friend Request
-										</a>
+										<p class="text-white font-medium text-2xl">{user.username}</p>
+										<div class="flex items-center bg-gray-900 rounded-lg shadow-lg px-1 py-0.5 mt-2">
+											{badge_HYPESQUAD_ONLINE_HOUSE_1 && (
+												<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbravery.svg" class="h-7 w-7" />
+											)}
+											{badge_HYPESQUAD_ONLINE_HOUSE_2 && (
+												<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbrilliance.svg" class="h-7 w-7" />
+											)}
+											{badge_HYPESQUAD_ONLINE_HOUSE_3 && (
+												<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/hypesquadbalance.svg" class="h-7 w-7" />
+											)}
+											{badge_ACTIVE_DEVELOPER && (
+												<img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/activedeveloper.svg" class="h-7 w-7" />
+											)}
+										</div>
 									</div>
 								</div>
 								<div class="bg-gray-900 rounded-lg shadow-lg p-4 mt-4">
-									<div>
-										<p class="text-white text-sm font-medium uppercase mb-1">About Me</p>
-										<p class="text-gray-400 text-sm">
-											ⓘ This user likes to make websites
-											<br>
-											<a href="https://ophx.pages.dev/" target="_blank" class="text-blue-500 hover:underline">
-												https://ophx.pages.dev/
-											</a>
-											<br />
-											<a href="https://greenfrogbot.lol/" target="_blank" class="text-blue-500 hover:underline">
-												https://greenfrogbot.lol/
-											</a>
-										</p>
-									</div>
 									{customActivities.map((activity) => (
 										<div>
-											<p class="text-white text-sm font-medium mb-1 uppercase mt-4">Playing A Game</p>
+											<p class="text-white text-sm font-medium mb-1 uppercase">Playing A Game</p>
 											<div class="flex items-start gap-4">
 												<div>
 													<div class="relative">
@@ -206,7 +185,7 @@ const formatTime = (seconds) => {
 												<div>
 													<img draggable="false" src={spotify.album_art_url} class="rounded-lg shadow-lg h-16 w-16" />
 												</div>
-												<div class="w-[50%]">
+												<div>
 													<a href={`https://open.spotify.com/track/${spotify.track_id}`} target="_blank" class="text-white font-medium hover:underline">
 														{spotify.song}
 													</a>
@@ -218,7 +197,7 @@ const formatTime = (seconds) => {
 															style={{ width: `${((Date.now() - spotify.timestamps.start) / (spotify.timestamps.end - spotify.timestamps.start)) * 100}%` }}>
 														</div>
 													</div>
-													<div class="flex items-center justify-between">
+													<div class="flex items-center justify-between w-44">
 														<p class="text-white text-sm">{formatTime((Date.now() - spotify.timestamps.start) / 1000)}</p>
 														<p class="text-white text-sm">{formatTime((spotify.timestamps.end - spotify.timestamps.start) / 1000)}</p>
 													</div>
