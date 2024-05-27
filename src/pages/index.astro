@@ -33,27 +33,10 @@ const HYPESQUAD_ONLINE_HOUSE_2 = 128;
 const HYPESQUAD_ONLINE_HOUSE_3 = 256;
 const ACTIVE_DEVELOPER = 4194304;
 const flags = user.public_flags;
-
-if ((flags & HYPESQUAD_ONLINE_HOUSE_1) == HYPESQUAD_ONLINE_HOUSE_1) {
-    var badge_HYPESQUAD_ONLINE_HOUSE_1 = true;
-} else {
-    var badge_HYPESQUAD_ONLINE_HOUSE_1 = false;
-}
-if ((flags & HYPESQUAD_ONLINE_HOUSE_2) == HYPESQUAD_ONLINE_HOUSE_2) {
-    var badge_HYPESQUAD_ONLINE_HOUSE_2 = true;
-} else {
-    var badge_HYPESQUAD_ONLINE_HOUSE_2 = false;
-}
-if ((flags & HYPESQUAD_ONLINE_HOUSE_3) == HYPESQUAD_ONLINE_HOUSE_3) {
-    var badge_HYPESQUAD_ONLINE_HOUSE_3 = true;
-} else {
-    var badge_HYPESQUAD_ONLINE_HOUSE_3 = false;
-}
-if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
-    var badge_ACTIVE_DEVELOPER = true;
-} else {
-    var badge_ACTIVE_DEVELOPER = false;
-}
+const badge_HYPESQUAD_ONLINE_HOUSE_1 = (flags & HYPESQUAD_ONLINE_HOUSE_1) === HYPESQUAD_ONLINE_HOUSE_1;
+const badge_HYPESQUAD_ONLINE_HOUSE_2 = (flags & HYPESQUAD_ONLINE_HOUSE_2) === HYPESQUAD_ONLINE_HOUSE_2;
+const badge_HYPESQUAD_ONLINE_HOUSE_3 = (flags & HYPESQUAD_ONLINE_HOUSE_3) === HYPESQUAD_ONLINE_HOUSE_3;
+const badge_ACTIVE_DEVELOPER = (flags & ACTIVE_DEVELOPER) === ACTIVE_DEVELOPER;
 
 activities = activities.filter((activity) => activity.name !== "Spotify");
 const customActivities = activities.map((activity) => {
