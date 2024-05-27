@@ -11,32 +11,6 @@ const status = data.data.discord_status;
 let activities = data.data.activities;
 let statusVar;
 
-activities = activities.filter((activity) => activity.name !== "Spotify");
-const activitiesWithElapsedTime = activities.map((activity) => {
-	const currentTime = Date.now();
-    const elapsedTimeMs = currentTime - activity.timestamps.start;
-    const seconds = Math.floor(elapsedTimeMs / 1000) % 60;
-    const minutes = Math.floor(elapsedTimeMs / (1000 * 60)) % 60;
-    const hours = Math.floor(elapsedTimeMs / (1000 * 60 * 60)) % 24;
-    const formattedElapsedTime = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-
-	const baseUrlLarge = activity.assets.large_image.split("/");
-	const indexLarge = baseUrlLarge.findIndex((part) => part.startsWith("https"));
-	const formattedImageUrlLarge = "https://" + baseUrlLarge.slice(indexLarge + 1).join("/");
-
-	if (activity.assets.small_image) {
-		var baseUrlSmall = activity.assets.small_image.split("/");
-		var indexSmall = baseUrlSmall.findIndex((part) => part.startsWith("https"));
-		var formattedImageUrlSmall = "https://" + baseUrlSmall.slice(indexSmall + 1).join("/");
-	}
-    return {
-        ...activity,
-        formattedElapsedTime: formattedElapsedTime,
-		formattedImageUrlLarge: formattedImageUrlLarge,
-		formattedImageUrlSmall: formattedImageUrlSmall,
-    };
-});
-
 switch (status) {
 	case "dnd":
 		statusVar = "1242127177147744327";
@@ -79,6 +53,39 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
     var badge_ACTIVE_DEVELOPER = true;
 } else {
     var badge_ACTIVE_DEVELOPER = false;
+}
+
+activities = activities.filter((activity) => activity.name !== "Spotify");
+const customActivities = activities.map((activity) => {
+	const currentTime = Date.now();
+    const elapsedTimeMs = currentTime - activity.timestamps.start;
+    const seconds = Math.floor(elapsedTimeMs / 1000) % 60;
+    const minutes = Math.floor(elapsedTimeMs / (1000 * 60)) % 60;
+    const hours = Math.floor(elapsedTimeMs / (1000 * 60 * 60)) % 24;
+    const formattedElapsedTime = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+	const baseUrlLarge = activity.assets.large_image.split("/");
+	const indexLarge = baseUrlLarge.findIndex((part) => part.startsWith("https"));
+	const formattedImageUrlLarge = "https://" + baseUrlLarge.slice(indexLarge + 1).join("/");
+
+	if (activity.assets.small_image) {
+		var baseUrlSmall = activity.assets.small_image.split("/");
+		var indexSmall = baseUrlSmall.findIndex((part) => part.startsWith("https"));
+		var formattedImageUrlSmall = "https://" + baseUrlSmall.slice(indexSmall + 1).join("/");
+	}
+	
+    return {
+        ...activity,
+        formattedElapsedTime: formattedElapsedTime,
+		formattedImageUrlLarge: formattedImageUrlLarge,
+		formattedImageUrlSmall: formattedImageUrlSmall,
+    };
+});
+
+const formatTime = (seconds) => {
+	const minutes = Math.floor(seconds / 60);
+	const remainingSeconds = Math.floor(seconds % 60);
+	return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
 }
 ---
 
@@ -166,42 +173,56 @@ if ((flags & ACTIVE_DEVELOPER) == ACTIVE_DEVELOPER) {
 											</a>
 										</p>
 									</div>
-									{activitiesWithElapsedTime.map((activity) => (
-										<p class="text-white text-sm font-medium mb-1 uppercase mt-4">Playing A Game</p>
-										<div class="flex items-start gap-4">
-											<div>
-												<div class="relative">
-													<img draggable="false" src={activity.formattedImageUrlLarge} class="rounded-lg shadow-lg h-16 w-16" />
-													{activity.assets.small_image && (
-														<img draggable="false" src={activity.formattedImageUrlSmall} class="absolute bottom-0 left-11 transform translate-y-1/4 w-8 h-8 border-4 border-gray-900 bg-gray-900 rounded-full" />
+									{customActivities.map((activity) => (
+										<div>
+											<p class="text-white text-sm font-medium mb-1 uppercase mt-4">Playing A Game</p>
+											<div class="flex items-start gap-4">
+												<div>
+													<div class="relative">
+														<img draggable="false" src={activity.formattedImageUrlLarge} class="rounded-lg shadow-lg h-16 w-16" />
+														{activity.assets.small_image && (
+															<img draggable="false" src={activity.formattedImageUrlSmall} class="absolute bottom-0 left-11 transform translate-y-1/4 w-8 h-8 border-4 border-gray-900 bg-gray-900 rounded-full" />
+														)}
+													</div>
+												</div>
+												<div>
+													<p class="text-white font-medium">{activity.name}</p>
+													<p class="text-gray-400 text-sm">{activity.state}</p>
+													<p class="text-gray-400 text-sm">{activity.details}</p>
+													{activity.timestamps.hasOwnProperty("start") && (
+														<p class="text-gray-400 text-sm">{activity.formattedElapsedTime} elapsed</p>
 													)}
 												</div>
 											</div>
-											<div>
-												<p class="text-white font-medium">{activity.name}</p>
-												<p class="text-gray-400 text-sm">{activity.state}</p>
-												<p class="text-gray-400 text-sm">{activity.details}</p>
-												{activity.timestamps.hasOwnProperty("start") && (
-													<p class="text-gray-400 text-sm">{activity.formattedElapsedTime} elapsed</p>
-												)}
-											</div>
 										</div>
 									))}
-									{activitiesWithElapsedTime.length === 0 && !spotify && (
+									{customActivities.length === 0 && !spotify && (
 										<p class="text-gray-400 text-sm mt-4">Not Playing Anything...</p>
 									)}
 									{spotify && (
-										<p class="text-white text-sm font-medium mb-1 uppercase mt-4">Listening To Spotify</p>
-										<div class="flex items-start gap-4">
-											<div>
-												<img draggable="false" src={spotify.album_art_url} class="rounded-lg shadow-lg h-16 w-16" />
-											</div>
-											<div>
-												<a href={`https://open.spotify.com/track/${spotify.track_id}`} target="_blank" class="text-white font-medium hover:underline">
-													{spotify.song}
-												</a>
-												<p class="text-gray-400 text-sm">By {spotify.artist}</p>
-												<p class="text-gray-400 text-sm">On {spotify.album}</p>
+										<div>
+											<p class="text-white text-sm font-medium mb-1 uppercase mt-4">Listening To Spotify</p>
+											<div class="flex items-start gap-4">
+												<div>
+													<img draggable="false" src={spotify.album_art_url} class="rounded-lg shadow-lg h-16 w-16" />
+												</div>
+												<div class="w-96">
+													<a href={`https://open.spotify.com/track/${spotify.track_id}`} target="_blank" class="text-white font-medium hover:underline">
+														{spotify.song}
+													</a>
+													<p class="text-gray-400 text-sm">By {spotify.artist}</p>
+													<p class="text-gray-400 text-sm">On {spotify.album}</p>
+													<div class="relative w-full h-1 bg-gray-800 rounded-full mt-2">
+														<div
+															class="absolute top-0 left-0 h-full bg-green-500 rounded-full"
+															style={{ width: `${((Date.now() - spotify.timestamps.start) / (spotify.timestamps.end - spotify.timestamps.start)) * 100}%` }}>
+														</div>
+													</div>
+													<div class="flex items-center justify-between">
+														<p class="text-white text-sm">{formatTime((Date.now() - spotify.timestamps.start) / 1000)}</p>
+														<p class="text-white text-sm">{formatTime((spotify.timestamps.end - spotify.timestamps.start) / 1000)}</p>
+													</div>
+												</div>
 											</div>
 										</div>
 									)}
