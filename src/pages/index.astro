@@ -116,7 +116,7 @@ import AnimatedScroll from "../components/AnimatedScroll";
 		}
 	};
 
-	const setBadges = (flags) => {
+	const setUserBadges = (flags) => {
 		const HYPESQUAD_ONLINE_HOUSE_1 = 64;
 		const HYPESQUAD_ONLINE_HOUSE_2 = 128;
 		const HYPESQUAD_ONLINE_HOUSE_3 = 256;
@@ -268,7 +268,7 @@ import AnimatedScroll from "../components/AnimatedScroll";
 		userAvatar.src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=4096`;
 		userName.innerHTML = `${user.username}`;
 
-		setBadges(user.public_flags);
+		setUserBadges(user.public_flags);
 	};
 	fetchUser();
 </script>
