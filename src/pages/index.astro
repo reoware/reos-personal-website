@@ -187,6 +187,19 @@ import AnimatedScroll from "../components/AnimatedScroll";
 			return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
 		};
 		
+		const createOrUpdate = (index, code, idPrefix = "activity-") => {
+			const existingDiv = document.querySelector(`#${idPrefix}${index}`);
+			if (existingDiv) {
+				existingDiv.innerHTML = code;
+			} else {
+				const el = document.createElement("div");
+				el.id = `${idPrefix}${index}`;
+				el.innerHTML = code;
+				activitiesContainer.appendChild(el);
+			}
+		};
+
+
 		activitiesContainer.innerHTML = "";
 		if (customActivities.length === 0 && !spotify) {
 			activitiesContainer.innerHTML = `<p class="text-gray-400 text-sm">Not Playing Anything...</p>`;
@@ -211,15 +224,7 @@ import AnimatedScroll from "../components/AnimatedScroll";
 					</div>
 				</div>
 			`;
-			const existingDiv = document.querySelector(`#activity-${index}`);
-			if (existingDiv) {
-				existingDiv.innerHTML = `${code}`;
-			} else {
-				const el = document.createElement("div");
-				el.id = `activity-${index}`;
-				el.innerHTML = `${code}`;
-				activitiesContainer.append(el);
-			}
+			createOrUpdate(index, code);
 		});
 		if (spotify) {
 			const code = `
@@ -244,15 +249,7 @@ import AnimatedScroll from "../components/AnimatedScroll";
 					</div>
 				</div>
 			`;
-			const existingSpotifyDiv = document.querySelector("#spotifyActivity");
-			if (existingSpotifyDiv) {
-				existingSpotifyDiv.innerHTML = `${code}`;
-			} else {
-				const el = document.createElement("div");
-				el.id = "spotifyActivity";
-				el.innerHTML = `${code}`;
-				activitiesContainer.appendChild(el);
-			}
+			createOrUpdate("spotify", code, "spotifyActivity");
 		}
 	};
 	fetchData();
