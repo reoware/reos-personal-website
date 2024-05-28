@@ -5,10 +5,26 @@ import AnimatedScroll from "../components/AnimatedScroll";
 
 <Layout title="Hello, I'm ophx!">
 	<main>
+		<!-- navbar -->
+		<div class="container px-32 p-4 mx-auto">
+			<div class="w-full border-2 border-[#101010] bg-[#090909] px-4 py-2 rounded-lg shadow-lg">
+				<div class="flex items-center justify-between">
+					<div>
+						<img draggable="false" src="https://cdn3.emoji.gg/emojis/9879_hackerman.gif" class="h-10 w-10" />
+					</div>
+					<div class="flex items-center gap-4">
+						<a href="https://github.com/ophx/ophx-personal-website" target="_blank" class="transition-all duriation-150 text-gray-400 hover:text-white font-medium">
+							Source Code
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- hero -->
 		<AnimatedScroll client:load>
-			<div class="container px-32 p-4 mx-auto flex w-full h-screen">
-				<div class="my-auto w-full">
+			<div class="container px-32 p-4 mx-auto flex w-full">
+				<div class="mt-44 w-full">
 					<div class="flex items-center justify-between">
 						<div class="w-[490px] max-w-[490px]">
 							<p class="text-white text-5xl">Hello, I'm ophx!</p>
