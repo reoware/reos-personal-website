@@ -18,8 +18,8 @@ export default function Discord() {
     const [ spotify, setSpotify ] = useState({
         track_id: "",
         timestamps: {
-            start: 1716924989440,
-            end: 1716925195106
+            start: 0,
+            end: 0,
         },
         album: "",
         album_art_url: "",
