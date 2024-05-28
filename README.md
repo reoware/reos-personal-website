@@ -1,6 +1,7 @@
 # My personal website!
+Uses https://api.lanyard.rest/ for Discord profile information
 
-All commands are run from the root of the project, from a terminal:
+# Commands
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
 | `npm install`             | Installs dependencies                            |
