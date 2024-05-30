@@ -2,25 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import AnimatedScroll from "../components/AnimatedScroll";
 import Discord from "../components/Discord";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <Layout title="Hello, I'm ophx!">
 	<main>
 		<!-- navbar -->
-		<div class="container px-32 p-4 mx-auto">
-			<div class="w-full border-2 border-[#101010] bg-[#090909] px-4 py-2 rounded-lg shadow-lg">
-				<div class="flex items-center justify-between">
-					<div>
-						<img draggable="false" src="https://cdn3.emoji.gg/emojis/9879_hackerman.gif" class="h-10 w-10" />
-					</div>
-					<div class="flex items-center gap-4">
-						<a href="https://github.com/ophx/ophx-personal-website" target="_blank" class="transition-all duriation-150 text-gray-400 hover:text-white font-medium">
-							Source Code
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		<Navbar />
 
 		<!-- hero -->
 		<AnimatedScroll client:load>
@@ -28,7 +16,7 @@ import Discord from "../components/Discord";
 				<div class="mt-44 w-full">
 					<div class="flex items-center justify-between">
 						<div class="w-[490px] max-w-[490px]">
-							<p class="text-white text-5xl">Hello, I'm ophx!</p>
+							<p class="text-white text-5xl font-medium">Hello, I'm ophx!</p>
 							<p class="text-gray-400 text-xl">A 17 year old developer from Michigan.</p>
 							<div class="border-b-2 border-purple-800 w-24 mt-4 mb-4"></div>
 							<p class="text-gray-400">Ever since I was 9 years old, coding has been my passion. It started with messing around jailbreaking PS3's and making MW3 cheats. From there, I fell in love with coding and never looked back. Coding isn't just a hobby for me, it's a part of who I am, driving me to constantly seek out new challenges and opportunities to expand my skills.</p>
