@@ -43,7 +43,7 @@ export default function Discord() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("https://api.lanyard.rest/v1/users/459738097622712320");
+            const response = await fetch("https://api.lanyard.rest/v1/users/1046556208556941363");
             const data = await response.json();
             const userData = data.data.discord_user;
             const statusData = data.data.discord_status;
@@ -75,12 +75,12 @@ export default function Discord() {
             const HYPESQUAD_ONLINE_HOUSE_2 = 128;
             const HYPESQUAD_ONLINE_HOUSE_3 = 256;
             const ACTIVE_DEVELOPER = 4194304;
+            const NITRO = 512;
             const flags = userData.public_flags || 0;
             const badge_HYPESQUAD_ONLINE_HOUSE_1 = (flags & HYPESQUAD_ONLINE_HOUSE_1) === HYPESQUAD_ONLINE_HOUSE_1;
             const badge_HYPESQUAD_ONLINE_HOUSE_2 = (flags & HYPESQUAD_ONLINE_HOUSE_2) === HYPESQUAD_ONLINE_HOUSE_2;
             const badge_HYPESQUAD_ONLINE_HOUSE_3 = (flags & HYPESQUAD_ONLINE_HOUSE_3) === HYPESQUAD_ONLINE_HOUSE_3;
             const badge_ACTIVE_DEVELOPER = (flags & ACTIVE_DEVELOPER) === ACTIVE_DEVELOPER;
-
             setBadges({
                 badge_HYPESQUAD_ONLINE_HOUSE_1,
                 badge_HYPESQUAD_ONLINE_HOUSE_2,
@@ -148,6 +148,7 @@ export default function Discord() {
                         {badges.badge_ACTIVE_DEVELOPER && (
                             <img draggable="false" src="https://raw.githubusercontent.com/mezotv/discord-badges/1d46c1feb168386ee2771d61397cf6b1eb4dde8f/assets/activedeveloper.svg" className="h-7 w-7" />
                         )}
+
 					</div>
 				</div>
 			</div>
