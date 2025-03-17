@@ -1,4 +1,4 @@
-# MADE BY OPHX NOT ME
+# My own little webstie
 Uses https://api.lanyard.rest/ for Discord profile information
 
 # Commands

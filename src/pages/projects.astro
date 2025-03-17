@@ -1,0 +1,182 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AnimatedScroll from "../components/AnimatedScroll";
+import Navbar from "../components/Navbar.astro";
+---
+
+<style>
+	.scrolling-wrapper {
+        overflow-x: hidden;
+    	width: 100%;
+    }
+	.scrolling-container {
+		animation: scroll 20s linear infinite;
+	}
+	.scrolling-container:hover {
+		animation-play-state: paused;
+	}
+	@keyframes scroll {
+		0% {
+			transform: translateX(100%);
+		}
+		100% {
+			transform: translateX(-170%);
+		}
+	}
+</style>
+
+<Layout title="Reo's Projects">
+	<main>
+		<!-- navbar -->
+        <Navbar />
+
+		<!-- hero -->
+		<AnimatedScroll client:load>
+			<div class="container px-32 p-4 mx-auto flex w-full">
+				<div class="mt-24 w-full">
+					<div>
+						<div class="grid grid-cols-2 gap-4">
+							<div class="col-span-2 border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg">
+							<p class="text-white text-2xl font-medium text-center">My Projects</p>
+							<p class="text-gray-400 text-center">Here are all my open source projects to date.</p>
+							<div class="grid grid-cols-5 gap-4 mt-9">
+									<a
+										href="https://github.com/reoware/reos-personal-website"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-1-logo.png"
+											alt="Project 1 Logo"
+											class="w-full h-128 object-cover rounded-md"
+										/>
+									</a>
+									<a
+										href="https://github.com/your-username/project-2"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-2-logo.png"
+											alt="Project 2 Logo"
+											class="w-full h-128 object-cover rounded-md"
+										/>
+									</a>
+									<a
+										href="https://github.com/your-username/project-3"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-2-logo.png"
+											alt="Project 3 Logo"
+											class="w-full h-128 object-cover rounded-md"
+										/>
+									</a>
+									<a
+										href="https://github.com/your-username/project-4"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-2-logo.png"
+											alt="Project 4 Logo"
+											class="w-full h-128 object-cover rounded-md"
+										/>
+									</a>
+									<a
+										href="https://github.com/your-username/project-5"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-2-logo.png"
+											alt="Project 5 Logo"
+											class="w-full h-128 object-cover rounded-md"
+										/>
+									</a>
+									<a
+										href="https://github.com/your-username/project-6"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-2-logo.png"
+											alt="Project 6 Logo"
+											class="w-full h-128 object-cover rounded-md"
+										/>
+									</a>
+									<a
+										href="https://github.com/your-username/project-7"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-2-logo.png"
+											alt="Project 7 Logo"
+											class="w-full h-128 object-cover rounded-md"
+										/>
+									</a>
+									<a
+										href="https://github.com/your-username/project-8"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-2-logo.png"
+											alt="Project 8 Logo"
+											class="w-full h-128 object-cover rounded-md"
+										/>
+									</a>
+									<a
+										href="https://github.com/your-username/project-9"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-2-logo.png"
+											alt="Project 9 Logo"
+											class="w-full h-128 object-cover rounded-md"
+										/>
+										<a
+										href="https://github.com/your-username/project-9"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="block border-2 border-[#101010] bg-[#090909] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									>
+										<img
+											src="/public/project-2-logo.png"
+											alt="Project 9 Logo"
+											class="w-full h-128 object-cover rounded-md"
+											
+									</a>
+									</a>
+										/>
+									</a>
+								</div>
+								</div>
+								</div>
+										</div>
+									</div>
+								</div>
+                            </div>
+										</div>
+									</div>
+								</div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</AnimatedScroll>
+	</main>
+</Layout>
