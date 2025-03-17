@@ -1,4 +1,4 @@
-# My own little webstie
+# My own little webstie 
 Uses https://api.lanyard.rest/ for Discord profile information
 
 # Commands
